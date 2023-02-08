@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGHeroes
+namespace RPGHeroes.Heroes
 {
-    internal class Mage : Heroes.Hero
+    internal class Mage : Hero
     {
         public Mage(string name) : base(name)
         {

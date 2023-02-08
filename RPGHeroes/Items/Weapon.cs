@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Items
 {
-    internal class Weapon
+    public enum WeaponType
     {
+        Axe,
+        Bow,
+        Dagger,
+        Hammer,
+        Staff,
+        Sword,
+        Wand
+    }
+    internal class Weapon : Item
+    {
+        public WeaponType Type { get; set; }
+        public int WeaponDamage { get; set; }
     }
 }
