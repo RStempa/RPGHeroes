@@ -16,8 +16,15 @@ namespace RPGHeroes.Items
 
     internal abstract class Item
     {
-        protected string Name { get; set; }
-        protected int RequieredLevel { get; set; }
-        protected Slot Slot { get; set; }
+        public string Name { get; set; }
+        public int RequieredLevel { get; set; }
+        public Slot Slot { get; set; }
+
+        public Item(string name, int requieredLevel, Slot slot)
+        {
+            Name = name;
+            RequieredLevel = requieredLevel;
+            Slot = slot;
+        }   
     }
 }

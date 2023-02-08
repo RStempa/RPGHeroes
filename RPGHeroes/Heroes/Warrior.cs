@@ -8,7 +8,7 @@ namespace RPGHeroes.Heroes
 {
     internal class Warrior : Hero
     {
-        public Warrior(string name) : base(name)
+        public Warrior(string name) : base(name, 5, 2, 1)
         {
         }
 

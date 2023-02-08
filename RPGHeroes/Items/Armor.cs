@@ -13,9 +13,15 @@ namespace RPGHeroes.Items
         Mail,
         Plate
     }
-    internal class Armor
+    internal class Armor : Item
     {
         public ArmorType Type { get;}
         public HeroAttribute ArmorAttribute { get;}
+
+        public Armor(string name, int requieredLevel, Slot slot) : base(name, requieredLevel, slot)
+        {
+        }
+
+
     }
 }

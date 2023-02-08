@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGHeroes.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +9,27 @@ namespace RPGHeroes.Heroes
 {
     internal abstract class Hero
     {
-        protected string Name { get; set; }
-        protected int Level { get; set; }
+        public string Name { get; set; }
         // level attributes - total from all levels
+        public HeroAttribute LevelAttributes { get; set; }
+        public int Level { get; set; }
         // Equipment - holds currently equipped items
+        public Dictionary<Slot, Item> Equipment { get; set; }
         // ValidWeaponTypes – a list of weapon types a hero can equip based on their subclass
+        public List<Weapon> ValidWeaponTypes { get; set; }
         // ValidArmorTypes - a list of armor types a hero can equip based on their subclass
+        public List<Armor> ValidArmorTypes { get; set; }
 
 
         // Constructor – each hero is created by passing just a name.
-        public Hero(string name)
+        public Hero(string name, int strength, int dexterity, int intelligence)
         {
-            this.Name = name;
-            this.Level = 1;
+            Name = name;
+            Level = 1;
+            Equipment = new Dictionary<Slot, Item>();
+            ValidWeaponTypes = new List<Weapon>();
+            ValidArmorTypes = new List<Armor>();
+            LevelAttributes = new HeroAttribute(strength, dexterity, intelligence);
         }
         // LevelUp – increases the level of a character by 1 and increases their LevelAttributes
         public abstract void LevelUp();
