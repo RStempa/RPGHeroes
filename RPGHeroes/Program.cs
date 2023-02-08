@@ -10,6 +10,7 @@ namespace RPGHeroes
             Console.WriteLine(mage.Name);
             Console.WriteLine(mage.LevelAttributes.Strength);
             //Console.WriteLine(mage.Equipment.ToArray());
+            // testing testing 123
 
         }
     }
