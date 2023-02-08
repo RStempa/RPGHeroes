@@ -19,7 +19,10 @@ namespace RPGHeroes.Heroes
 
         public override string Display()
         {
-            throw new NotImplementedException();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("Hero " + Name);
+            stringBuilder.Append(" is at level " + Level);
+            return stringBuilder.ToString();
         }
 
         public override void EquipArmor()
@@ -34,7 +37,7 @@ namespace RPGHeroes.Heroes
 
         public override void LevelUp()
         {
-            throw new NotImplementedException();
+            Level += 1;
         }
 
         public override int TotalAttributes()

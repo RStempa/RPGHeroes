@@ -7,10 +7,9 @@ namespace RPGHeroes
         static void Main(string[] args)
         {
             Mage mage = new Mage("Albert");
-            Console.WriteLine(mage.Name);
-            Console.WriteLine(mage.LevelAttributes.Strength);
-            //Console.WriteLine(mage.Equipment.ToArray());
-            // testing testing 123
+            Console.WriteLine(mage.Display());
+            mage.LevelUp();
+            Console.WriteLine(mage.Display());
 
         }
     }
