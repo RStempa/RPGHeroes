@@ -8,8 +8,8 @@ namespace RPGHeroes.Heroes
 {
     internal abstract class Hero
     {
-        protected string name { get; set; }
-        protected int level { get; set; }
+        protected string Name { get; set; }
+        protected int Level { get; set; }
         // level attributes - total from all levels
         // Equipment - holds currently equipped items
         // ValidWeaponTypes – a list of weapon types a hero can equip based on their subclass
@@ -19,8 +19,8 @@ namespace RPGHeroes.Heroes
         // Constructor – each hero is created by passing just a name.
         public Hero(string name)
         {
-            this.name = name;
-            this.level = 1;
+            this.Name = name;
+            this.Level = 1;
         }
         // LevelUp – increases the level of a character by 1 and increases their LevelAttributes
         public abstract void LevelUp();
