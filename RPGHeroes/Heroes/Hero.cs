@@ -28,7 +28,7 @@ namespace RPGHeroes.Heroes
         public abstract void LevelUp();
         public abstract void EquipArmor(Armor armor);
         public abstract void EquipWeapon(Weapon weapon);
-        public abstract void CalculateDamange();
+        public abstract double CalculateDamange();
         public abstract HeroAttributes CalculateTotalAttributes();
         public abstract string Display();
 

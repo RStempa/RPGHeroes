@@ -15,13 +15,25 @@ namespace RPGHeroes.Heroes
             sb = new StringBuilder();
         }
 
-        public override void CalculateDamange()
+        public override double CalculateDamange()
         {
             // Damage – damage is calculated on the fly and not stored
             // Damage increased by total intelligence = damaging attribute
             // Hero damage = WeaponDamage * (1 + DamagingAttribute/100)
             // If a Hero has no weapon equipped, take their WeaponDamage to be 1.
-            throw new NotImplementedException();
+
+            Weapon weapon;
+            if (Equipment.TryGetValue(Slot.Weapon, out Item? aWeapon))
+            {
+                weapon = (Weapon) aWeapon;
+                HeroAttributes attributes = CalculateTotalAttributes();
+                double damage = weapon.WeaponDamage * (1 + attributes.Intelligence / 100);
+                return damage;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         public override string Display()
@@ -30,8 +42,8 @@ namespace RPGHeroes.Heroes
             sb.AppendLine("Name: " + Name);
             sb.AppendLine("Class: Mage");
             sb.AppendLine("Level: " + Level);
-            sb.AppendLine(LevelAttributes.ToString());
-            //sb.Append("Damage: " + CalculateDamange());
+            sb.Append(LevelAttributes.ToString());
+            sb.AppendLine("Damage: " + CalculateDamange());
             return sb.ToString();
         }
 

@@ -27,6 +27,7 @@ namespace RPGHeroes
         
         public override string ToString()
         {
+            sb.Clear();
             sb.AppendLine("Strength: " + Strength);
             sb.AppendLine("Dexterity: " + Dexterity);
             sb.AppendLine("Intelligence: " + Intelligence);

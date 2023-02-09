@@ -15,12 +15,13 @@ namespace RPGHeroes.Heroes
             sb= new StringBuilder();
         }
 
-        public override void CalculateDamange()
+        public override double CalculateDamange()
         {
             // Damage – damage is calculated on the fly and not stored
             // Damage increased by total strength = damaging attribute
             // Hero damage = WeaponDamage * (1 + DamagingAttribute/100)
             // If a Hero has no weapon equipped, take their WeaponDamage to be 1.
+            throw new NotImplementedException();
         }
 
         public override string Display()
