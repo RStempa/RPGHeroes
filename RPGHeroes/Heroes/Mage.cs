@@ -65,7 +65,7 @@ namespace RPGHeroes.Heroes
         
         public override HeroAttributes CalculateTotalAttributes()
         {
-            HeroAttributes gainedArmorAttributes = new HeroAttributes(0, 0, 0);
+            HeroAttributes gainedArmorAttributes = new(0, 0, 0);
             Armor armor;
             
             if(Equipment.TryGetValue(Slot.Head, out Item? headArmor))
