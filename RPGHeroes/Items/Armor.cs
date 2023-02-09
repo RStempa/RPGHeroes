@@ -18,10 +18,10 @@ namespace RPGHeroes.Items
         public ArmorType Type { get;}
         public HeroAttributes ArmorAttributes { get;}
 
-        public Armor(string name, int requieredLevel, Slot slot, ArmorType type, HeroAttributes armorAttributes) : base(name, requieredLevel, slot)
+        public Armor(string name, int requieredLevel, Slot slot, ArmorType type, int strength, int dexterity, int intelligence) : base(name, requieredLevel, slot)
         {
             Type = type;
-            ArmorAttributes = armorAttributes;
+            ArmorAttributes = new HeroAttributes(strength, dexterity, intelligence);    
         }
 
         public override string ItemToString()

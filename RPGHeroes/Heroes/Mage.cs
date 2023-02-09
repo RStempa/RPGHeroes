@@ -44,7 +44,6 @@ namespace RPGHeroes.Heroes
             Equipment.Add(armor.Slot, armor);
             // increase attribute points
             // ArmorAttributes + HeroAttributes
-
         }
 
         public override void EquipWeapon(Weapon weapon)
@@ -63,10 +62,29 @@ namespace RPGHeroes.Heroes
             HeroAttributes LevelUpAttributes = new HeroAttributes(1, 1, 5);
             LevelAttributes = HeroAttributes.AddAttributes(LevelUpAttributes, LevelAttributes);
         }
-        // Calculates total attributes based on Level attributes and equipped items.
-        public override int CalculateTotalAttributes()
+        
+        public override HeroAttributes CalculateTotalAttributes()
         {
-            throw new NotImplementedException();
+            HeroAttributes gainedArmorAttributes = new HeroAttributes(0, 0, 0);
+            Armor armor;
+            
+            if(Equipment.TryGetValue(Slot.Head, out Item? headArmor))
+            {
+                armor = (Armor)headArmor;
+                gainedArmorAttributes = HeroAttributes.AddAttributes(armor.ArmorAttributes, gainedArmorAttributes);
+            }
+            if (Equipment.TryGetValue(Slot.Body, out Item? bodyArmor))
+            {
+                armor = (Armor)bodyArmor;
+                gainedArmorAttributes = HeroAttributes.AddAttributes(armor.ArmorAttributes, gainedArmorAttributes);
+            }
+            if (Equipment.TryGetValue(Slot.Head, out Item? legsArmor))
+            {
+                armor = (Armor)legsArmor;
+                gainedArmorAttributes = HeroAttributes.AddAttributes(armor.ArmorAttributes, gainedArmorAttributes);
+            }
+
+            return HeroAttributes.AddAttributes(gainedArmorAttributes, LevelAttributes);
         }
     }
 }
