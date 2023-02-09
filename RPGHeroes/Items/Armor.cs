@@ -16,12 +16,17 @@ namespace RPGHeroes.Items
     internal class Armor : Item
     {
         public ArmorType Type { get;}
-        public HeroAttribute ArmorAttribute { get;}
+        public HeroAttributes ArmorAttributes { get;}
 
-        public Armor(string name, int requieredLevel, Slot slot) : base(name, requieredLevel, slot)
+        public Armor(string name, int requieredLevel, Slot slot, ArmorType type, HeroAttributes armorAttributes) : base(name, requieredLevel, slot)
         {
+            Type = type;
+            ArmorAttributes = armorAttributes;
         }
 
-
+        public override string ItemToString()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

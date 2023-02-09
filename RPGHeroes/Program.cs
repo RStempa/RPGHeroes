@@ -6,10 +6,10 @@ namespace RPGHeroes
     {
         static void Main(string[] args)
         {
-            Mage mage = new Mage("Albert");
-            Console.WriteLine(mage.Display());
-            mage.LevelUp();
-            Console.WriteLine(mage.Display());
+            Mage albert = new Mage("Albert");
+            Console.WriteLine(albert.Display());
+            albert.LevelUp();
+            Console.WriteLine(albert.Display());
 
         }
     }

@@ -21,10 +21,15 @@ namespace RPGHeroes.Items
         public WeaponType Type { get; set; }
         public int WeaponDamage { get; set; }
 
-        public Weapon(string name, int requieredLevel, Slot slot, WeaponType type, int weaponDamage) : base(name, requieredLevel, slot)
+        public Weapon(string name, int requieredLevel, WeaponType type, int weaponDamage) : base(name, requieredLevel, Slot.Weapon)
         {
-            WeaponDamage = weaponDamage;
             Type = type;
+            WeaponDamage = weaponDamage;
+        }
+
+        public override string ItemToString()
+        {
+            throw new NotImplementedException();
         }
     }
 }

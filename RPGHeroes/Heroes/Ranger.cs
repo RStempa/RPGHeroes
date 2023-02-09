@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGHeroes.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace RPGHeroes.Heroes
         {
         }
 
-        public override void Damange()
+        public override void CalculateDamange()
         {
             throw new NotImplementedException();
         }
@@ -22,12 +23,12 @@ namespace RPGHeroes.Heroes
             throw new NotImplementedException();
         }
 
-        public override void EquipArmor()
+        public override void EquipArmor(Armor armor)
         {
             throw new NotImplementedException();
         }
 
-        public override void EquipWeapon()
+        public override void EquipWeapon(Weapon weapon)
         {
             throw new NotImplementedException();
         }
@@ -37,7 +38,7 @@ namespace RPGHeroes.Heroes
             throw new NotImplementedException();
         }
 
-        public override int TotalAttributes()
+        public override int CalculateTotalAttributes()
         {
             throw new NotImplementedException();
         }
