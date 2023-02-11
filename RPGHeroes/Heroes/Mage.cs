@@ -17,17 +17,13 @@ namespace RPGHeroes.Heroes
 
         public override double CalculateDamange()
         {
-            // Damage – damage is calculated on the fly and not stored
             // Damage increased by total intelligence = damaging attribute
-            // Hero damage = WeaponDamage * (1 + DamagingAttribute/100)
-            // If a Hero has no weapon equipped, take their WeaponDamage to be 1.
-
             Weapon weapon;
             if (Equipment.TryGetValue(Slot.Weapon, out Item? aWeapon))
             {
                 weapon = (Weapon) aWeapon;
                 HeroAttributes attributes = CalculateTotalAttributes();
-                double damage = weapon.WeaponDamage * (1 + attributes.Intelligence / 100);
+                double damage = weapon.WeaponDamage * (1 + (double)attributes.Intelligence / 100);
                 return damage;
             }
             else
@@ -51,21 +47,22 @@ namespace RPGHeroes.Heroes
         {
             if (armor.Type != ArmorType.Cloth || armor.RequieredLevel > Level)
             {
-                throw new Exception("Invalid armor exception!"); // make special exception 
+                throw new Exception("Invalid armor exception!"); 
             }
             Equipment.Add(armor.Slot, armor);
-            // increase attribute points
-            // ArmorAttributes + HeroAttributes
         }
 
         public override void EquipWeapon(Weapon weapon)
         {
-            if (weapon.Type != WeaponType.Staff || weapon.Type != WeaponType.Wand || weapon.RequieredLevel > Level)
+            if ((weapon.Type == WeaponType.Staff || weapon.Type == WeaponType.Wand) && weapon.RequieredLevel <= Level) // must be tested!
+            {
+                Equipment.Add(weapon.Slot, weapon);
+            }
+            else
             {
                 throw new Exception("Invalid weapon Exception!");
             }
-            Equipment.Add(weapon.Slot, weapon);
-            // Weapon Damage
+            
         }
 
         public override void LevelUp()
@@ -95,7 +92,6 @@ namespace RPGHeroes.Heroes
                 armor = (Armor)legsArmor;
                 gainedArmorAttributes = HeroAttributes.AddAttributes(armor.ArmorAttributes, gainedArmorAttributes);
             }
-
             return HeroAttributes.AddAttributes(gainedArmorAttributes, LevelAttributes);
         }
     }

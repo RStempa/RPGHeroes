@@ -26,7 +26,6 @@ namespace RPGHeroes.Items
             RequieredLevel = requieredLevel;
             Slot = slot;
         }
-
         public abstract string ItemToString();
     }
 }

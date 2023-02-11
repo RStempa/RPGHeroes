@@ -20,7 +20,7 @@ namespace RPGHeroes.Heroes
         {
             Name = name;
             Level = 1;
-            Equipment = new Dictionary<Slot, Item>();
+            Equipment = new Dictionary<Slot, Item>(); // should have 4 keys and null values
             ValidWeaponTypes = new List<WeaponType>();
             ValidArmorTypes = new List<ArmorType>();
             LevelAttributes = new HeroAttributes(strength, dexterity, intelligence);
