@@ -18,7 +18,7 @@ namespace RPGHeroes.Items
     }
     internal class Weapon : Item
     {
-        StringBuilder sb;
+        private StringBuilder sb;
         public WeaponType Type { get; set; }
         public int WeaponDamage { get; set; }
 
@@ -36,6 +36,7 @@ namespace RPGHeroes.Items
             sb.Append("RequieredLevel: " + RequieredLevel);
             sb.Append("Slot: " + Slot);
             sb.Append("Type: " + Type);
+            sb.Append("Weapon damage: " + WeaponDamage);
             return sb.ToString();
         }
     }
