@@ -24,7 +24,15 @@ namespace RPGHeroes
         {
             return new HeroAttributes(a.Strength + b.Strength, a.Dexterity + b.Dexterity, a.Intelligence + b.Intelligence);
         }
-        
+
+        //public static HeroAttributes operator + (HeroAttributes a, HeroAttributes b) => new()
+        //{
+        //    Strength = a.Strength + b.Strength,
+        //    Dexterity = a.Dexterity + b.Dexterity,
+        //    Intelligence = a.Intelligence + b.Intelligence,
+        //    Vitality = a.Vitality + b.Vitality
+        //};
+
         public override string ToString()
         {
             sb.Clear();

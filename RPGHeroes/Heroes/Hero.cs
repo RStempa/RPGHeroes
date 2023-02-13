@@ -1,4 +1,5 @@
-﻿using RPGHeroes.Items;
+﻿using RPGHeroes.Exceptions;
+using RPGHeroes.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace RPGHeroes.Heroes
             }
             else
             {
-                throw new Exception("Invalid armor exception!");
+                throw new InvalidArmorException();
             }
         }
         public void EquipWeapon(Weapon weapon)
@@ -47,7 +48,7 @@ namespace RPGHeroes.Heroes
             }
             else
             {
-                throw new Exception("Invalid weapon Exception!");
+                throw new InvalidWeaponException();
             }
         }
         public HeroAttributes CalculateTotalAttributes()

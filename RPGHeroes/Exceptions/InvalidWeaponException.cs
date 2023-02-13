@@ -8,8 +8,14 @@ namespace RPGHeroes.Exceptions
 {
     internal class InvalidWeaponException : Exception
     {
-        public InvalidWeaponException() { }
+        public InvalidWeaponException() 
+        {
+        }
 
+        public InvalidWeaponException(string? message) : base(message)
+        {
+        }
 
+        public override string Message => "Invalid weapon for this hero!";
     }
 }

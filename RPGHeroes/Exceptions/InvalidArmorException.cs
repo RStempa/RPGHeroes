@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Exceptions
 {
-    internal class InvalidArmorException : Exception
+    public class InvalidArmorException : Exception
     {
-        public InvalidArmorException() { }
+        public InvalidArmorException() 
+        {
+        }  
+        public InvalidArmorException(string? message) : base(message)
+        {
+        }
 
-
+        public override string Message => "Invalid armor for this hero!";
     }
 }
