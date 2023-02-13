@@ -13,7 +13,7 @@ namespace RPGHeroes.Items
         Mail,
         Plate
     }
-    internal class Armor : Item
+    public class Armor : Item
     {
         StringBuilder sb;
         public ArmorType Type { get;}

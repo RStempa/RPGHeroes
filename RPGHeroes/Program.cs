@@ -12,14 +12,17 @@ namespace RPGHeroes
             //albert.LevelUp();
             //Console.WriteLine(albert.Display());
 
-            Weapon weapon = new Weapon("Common Wand", 1, WeaponType.Staff, 1);
             //Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 0, 0, 1);
-
-            albert.EquipWeapon(weapon);
             //albert.EquipArmor(armor);
 
-            Console.WriteLine("Damage " + albert.CalculateDamange());
-            
+            Weapon weapon1 = new Weapon("Common Wand", 1, WeaponType.Wand, 1);
+            albert.EquipWeapon(weapon1);
+            Weapon weapon2 = new Weapon("Common Staff", 1, WeaponType.Staff, 1);
+            albert.EquipWeapon(weapon2);
+            Console.WriteLine(albert.Display());
+
+            //Console.WriteLine("Damage " + albert.CalculateDamange());
+
 
         }
     }

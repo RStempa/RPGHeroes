@@ -16,7 +16,7 @@ namespace RPGHeroes.Items
         Sword,
         Wand
     }
-    internal class Weapon : Item
+    public class Weapon : Item
     {
         private StringBuilder sb;
         public WeaponType Type { get; set; }

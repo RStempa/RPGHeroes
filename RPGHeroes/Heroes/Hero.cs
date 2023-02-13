@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Heroes
 {
-    internal abstract class Hero
+    public abstract class Hero
     {
-        private StringBuilder sb;
-        protected string Name { get; set; }
-        protected HeroAttributes LevelAttributes { get; set; }
-        protected int Level { get; set; }
-        protected Dictionary<Slot, Item> Equipment { get; set; }
-        protected List<WeaponType> ValidWeaponTypes { get; set; }
-        protected List<ArmorType> ValidArmorTypes { get; set; }
+        public StringBuilder sb;
+        public string Name { get; set; }
+        public HeroAttributes LevelAttributes { get; set; }
+        public int Level { get; set; }
+        public Dictionary<Slot, Item> Equipment { get; set; }
+        public List<WeaponType> ValidWeaponTypes { get; set; }
+        public List<ArmorType> ValidArmorTypes { get; set; }
 
         public Hero(string name, int strength, int dexterity, int intelligence)
         {
@@ -33,7 +33,7 @@ namespace RPGHeroes.Heroes
         {
             if(ValidArmorTypes.Contains(armor.Type) && armor.RequieredLevel <= Level)
             {
-                Equipment.Add(armor.Slot, armor);
+                Equipment[armor.Slot] = armor;
             }
             else
             {
@@ -44,7 +44,7 @@ namespace RPGHeroes.Heroes
         {
             if(ValidWeaponTypes.Contains(weapon.Type) && weapon.RequieredLevel <= Level)
             {
-                Equipment.Add(weapon.Slot, weapon);
+                Equipment[weapon.Slot] = weapon;
             }
             else
             {
@@ -78,7 +78,7 @@ namespace RPGHeroes.Heroes
         {
             sb.Clear();
             sb.AppendLine("Name: " + Name);
-            sb.AppendLine("Class: " + type);
+            sb.AppendLine("Class: " + type); // this.Type.Name
             sb.AppendLine("Level: " + Level);
             sb.Append(LevelAttributes.ToString());
             sb.AppendLine("Damage: " + damage);

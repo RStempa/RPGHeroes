@@ -14,7 +14,7 @@ namespace RPGHeroes.Items
         Legs
     }
 
-    internal abstract class Item
+    public abstract class Item
     {
         StringBuilder sb;
         public string Name { get; set; }
