@@ -20,6 +20,14 @@ namespace RPGHeroes
             sb = new StringBuilder();
         }
 
+        public override bool Equals(object obj) // Must have to test equals
+        {
+            return obj is HeroAttributes attributes &&
+                   Strength == attributes.Strength &&
+                   Dexterity == attributes.Dexterity &&
+                   Intelligence == attributes.Intelligence;
+        }
+
         public static HeroAttributes AddAttributes(HeroAttributes a, HeroAttributes b)
         {
             return new HeroAttributes(a.Strength + b.Strength, a.Dexterity + b.Dexterity, a.Intelligence + b.Intelligence);
