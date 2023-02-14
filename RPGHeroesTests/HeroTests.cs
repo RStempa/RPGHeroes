@@ -10,7 +10,7 @@ namespace RPGHeroesTests
 
         #region Constructors
         [Fact]
-        public void Constructor_InitializeWithName_ShouldSetCorrectName()
+        public void Constructor_InitializeMageWithName_ShouldSetCorrectName()
         {
             // Arrange
             var name = "Alberto";
@@ -21,6 +21,46 @@ namespace RPGHeroesTests
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void Constructor_InitializeRangerWithName_ShouldSetCorrectName()
+        {
+            // Arrange
+            var name = "Alberto";
+            var ranger = new Ranger(name);
+            string expected = name;
+            // Act
+            string actual = ranger.Name;
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Constructor_InitializeRogueWithName_ShouldSetCorrectName()
+        {
+            // Arrange
+            var name = "Alberto";
+            var rogue = new Rogue(name);
+            string expected = name;
+            // Act
+            string actual = rogue.Name;
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Constructor_InitializeWarriorWithName_ShouldSetCorrectName()
+        {
+            // Arrange
+            var name = "Alberto";
+            var warrior = new Warrior(name);
+            string expected = name;
+            // Act
+            string actual = warrior.Name;
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
         [Fact]
         public void Constructor_Initialize_ShouldSetCorrectLevel()
         {
