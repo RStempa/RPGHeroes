@@ -28,6 +28,13 @@ namespace RPGHeroes.Items
             Slot = slot;
             sb= new StringBuilder();
         }
+        public override bool Equals(object obj) 
+        {
+            return obj is Item item &&
+                   Name == item.Name &&
+                   RequieredLevel == item.RequieredLevel &&
+                   Slot == item.Slot;
+        }
         public abstract string ItemToString();
     }
 }

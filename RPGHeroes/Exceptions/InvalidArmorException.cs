@@ -15,6 +15,6 @@ namespace RPGHeroes.Exceptions
         {
         }
 
-        public override string Message => "Invalid armor for this hero!";
+        public override string Message => "Invalid armor for this hero or level!";
     }
 }

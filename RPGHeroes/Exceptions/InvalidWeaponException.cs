@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Exceptions
 {
-    internal class InvalidWeaponException : Exception
+    public class InvalidWeaponException : Exception
     {
         public InvalidWeaponException() 
         {
@@ -16,6 +16,6 @@ namespace RPGHeroes.Exceptions
         {
         }
 
-        public override string Message => "Invalid weapon for this hero!";
+        public override string Message => "Invalid weapon for this hero or level!";
     }
 }

@@ -66,7 +66,7 @@ namespace RPGHeroes.Heroes
                 armor = (Armor)bodyArmor;
                 gainedArmorAttributes = HeroAttributes.AddAttributes(armor.ArmorAttributes, gainedArmorAttributes);
             }
-            if (Equipment.TryGetValue(Slot.Head, out Item? legsArmor))
+            if (Equipment.TryGetValue(Slot.Legs, out Item? legsArmor))
             {
                 armor = (Armor)legsArmor;
                 gainedArmorAttributes = HeroAttributes.AddAttributes(armor.ArmorAttributes, gainedArmorAttributes);
