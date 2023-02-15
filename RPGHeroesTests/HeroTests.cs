@@ -4,6 +4,8 @@ using RPGHeroes.Heroes;
 using RPGHeroes.Items;
 using RPGHeroes.Exceptions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using System.Text;
+using System.Threading;
 
 namespace RPGHeroesTests
 {
@@ -365,7 +367,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             Weapon weapon = new("Common Wand", 1, WeaponType.Wand, 2);
-            Warrior warrior = new("Alberto");
+            Hero warrior = new Warrior("Alberto");
             // Act
             //Assert
             Assert.Throws<InvalidWeaponException>(() => warrior.EquipWeapon(weapon));
@@ -376,7 +378,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             Weapon weapon = new("Common Wand", 2, WeaponType.Wand, 2);
-            Warrior warrior = new("Alberto");
+            Hero warrior = new Warrior("Alberto");
             // Act
             //Assert
             Assert.Throws<InvalidWeaponException>(() => warrior.EquipWeapon(weapon));
@@ -387,7 +389,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 0, 0, 1);
-            Warrior warrior = new("Alberto");
+            Hero warrior = new Warrior("Alberto");
             // Act
             //Assert
             Assert.Throws<InvalidArmorException>(() => warrior.EquipArmor(armor));
@@ -398,7 +400,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             Armor armor = new Armor("Common plate", 2, Slot.Body, ArmorType.Plate, 0, 0, 1);
-            Warrior warrior = new("Alberto");
+            Hero warrior = new Warrior("Alberto");
             // Act
             //Assert
             Assert.Throws<InvalidArmorException>(() => warrior.EquipArmor(armor));
@@ -411,7 +413,7 @@ namespace RPGHeroesTests
         public void TotalAttributes_WithNoArmor_ShouldReturnCorrectSum()
         {
             // Arrange
-            Mage albert = new Mage("Albert");
+            Hero albert = new Mage("Albert");
             HeroAttributes expected = new(1,1,8);
             // Act
             HeroAttributes actual = albert.CalculateTotalAttributes();
@@ -424,7 +426,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 1, 2, 3);
-            Mage albert = new Mage("Albert");
+            Hero albert = new Mage("Albert");
             HeroAttributes expected = new(2, 3, 11);
             // Act
             albert.EquipArmor(armor);
@@ -439,7 +441,7 @@ namespace RPGHeroesTests
             // Arrange
             Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 1, 2, 3);
             Armor armor2 = new Armor("Common cloth", 1, Slot.Legs, ArmorType.Cloth, 1, 2, 3);
-            Mage albert = new Mage("Albert");
+            Hero albert = new Mage("Albert");
             HeroAttributes expected = new(3, 5, 14);
             // Act
             albert.EquipArmor(armor);
@@ -455,7 +457,7 @@ namespace RPGHeroesTests
             // Arrange
             Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 1, 2, 3);
             Armor armor2 = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 2, 3, 4);
-            Mage albert = new Mage("Albert");
+            Hero albert = new Mage("Albert");
             HeroAttributes expected = new(3, 4, 12);
             // Act
             albert.EquipArmor(armor);
@@ -467,16 +469,217 @@ namespace RPGHeroesTests
 
         #endregion
 
-        // test all constructors hero
-        // test all level up attributes
-        //----------------------------------
-        // test all levelattributes
-        // test all add weapon
-        // test all add armor
-        // test all hero attributes after adding armor
-        // test all damage outcomes
-        // test all throws custom exceptions
-        // test all display methods
+        #region Damage
+
+        [Fact]
+        public void CalculateDamage_MageWithNoWeaon_ShouldReturnOne()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            double expected = 1;
+            // Act
+            double actual = albert.CalculateDamange();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CalculateDamage_MageWithWeaon_ShouldReturnCorrectSum()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            Weapon weapon = new Weapon("Common Wand", 1, WeaponType.Wand, 1);
+            double expected = 1.0 * (1.0 + (8.0/100.0));
+            // Act
+            albert.EquipWeapon(weapon);
+            double actual = albert.CalculateDamange();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CalculateDamage_MageWithNewWeaon_ShouldReturnCorrectSum()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            Weapon weapon = new Weapon("Common Wand", 1, WeaponType.Wand, 1);
+            Weapon weapon2 = new Weapon("Common Staff", 1, WeaponType.Staff, 2);
+            double expected = 2.0 * (1.0 + (8.0 / 100.0));
+            // Act
+            albert.EquipWeapon(weapon);
+            albert.EquipWeapon(weapon2);
+            double actual = albert.CalculateDamange();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CalculateDamage_MageWithWeaponAndArmor_ShouldReturnCorrectSum()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            Weapon weapon = new Weapon("Common Wand", 1, WeaponType.Wand, 1);
+            Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 1, 2, 3);
+            double expected = 1.0 * (1.0 + (11.0 / 100.0));
+            // Act
+            albert.EquipWeapon(weapon);
+            albert.EquipArmor(armor);
+            double actual = albert.CalculateDamange();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        #endregion
+
+        #region Display
+
+        [Fact]
+        public void Display_MageWithNoWeaponNoArmor_ShouldDisplayCorrectStats()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Name: " + "Albert");
+            sb.AppendLine("Class: " + "Mage");
+            sb.AppendLine("Level: " + 1);
+            sb.AppendLine("Strength: " + 1);
+            sb.AppendLine("Dexterity: " + 1);
+            sb.AppendLine("Intelligence: " + 8);
+            sb.AppendLine("Damage: " + 1);
+            string expected = sb.ToString();
+            // Act
+            string actual = albert.Display();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Display_MageWithNoWeaponNoArmorLevelUp_ShouldDisplayCorrectStats()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Name: " + "Albert");
+            sb.AppendLine("Class: " + "Mage");
+            sb.AppendLine("Level: " + 2);
+            sb.AppendLine("Strength: " + 2);
+            sb.AppendLine("Dexterity: " + 2);
+            sb.AppendLine("Intelligence: " + 13);
+            sb.AppendLine("Damage: " + 1);
+            string expected = sb.ToString();
+            // Act
+            albert.LevelUp();
+            string actual = albert.Display();
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public void Display_MageWithWeaponNoArmor_ShouldDisplayCorrectStats()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            Weapon weapon = new Weapon("Common Wand", 1, WeaponType.Wand, 1);
+            
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Name: " + "Albert");
+            sb.AppendLine("Class: " + "Mage");
+            sb.AppendLine("Level: " + 1);
+            sb.AppendLine("Strength: " + 1);
+            sb.AppendLine("Dexterity: " + 1);
+            sb.AppendLine("Intelligence: " + 8);
+            sb.AppendLine("Damage: " + 1.08);
+            string expected = sb.ToString();
+            // Act
+            albert.EquipWeapon(weapon);
+            string actual = albert.Display();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Display_MageWithNoWeaponAndArmor_ShouldDisplayCorrectStats()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            Armor armor = new("Common cloth", 1, Slot.Body, ArmorType.Cloth, 0, 0, 1);
+           
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Name: " + "Albert");
+            sb.AppendLine("Class: " + "Mage");
+            sb.AppendLine("Level: " + 1);
+            sb.AppendLine("Strength: " + 1);
+            sb.AppendLine("Dexterity: " + 1);
+            sb.AppendLine("Intelligence: " + 9);
+            sb.AppendLine("Damage: " + 1);
+            string expected = sb.ToString();
+            // Act
+            albert.EquipArmor(armor);          
+            string actual = albert.Display();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Display_MageWithWeaponAndArmor_ShouldDisplayCorrectStats()
+        {
+            // Arrange
+            Hero albert = new Mage("Albert");
+            Armor armor = new("Common cloth", 1, Slot.Body, ArmorType.Cloth, 0, 0, 1);
+            Weapon weapon = new Weapon("Common Wand", 1, WeaponType.Wand, 1);
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Name: " + "Albert");
+            sb.AppendLine("Class: " + "Mage");
+            sb.AppendLine("Level: " + 1);
+            sb.AppendLine("Strength: " + 1);
+            sb.AppendLine("Dexterity: " + 1);
+            sb.AppendLine("Intelligence: " + 9);
+            sb.AppendLine("Damage: " + 1.09);
+            string expected = sb.ToString();
+            // Act
+            albert.EquipArmor(armor);
+            albert.EquipWeapon(weapon);
+            string actual = albert.Display();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        #endregion
+
+        #region HeroAttributes
+
+        [Fact]
+        public void ToString_HeroAttributesDisplayState_ShouldReturnCorrectValues()
+        {
+            // Arrange
+            HeroAttributes attributes = new HeroAttributes(1,1,8);
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Strength: " + 1);
+            sb.AppendLine("Dexterity: " + 1);
+            sb.AppendLine("Intelligence: " + 8);
+            string expected = sb.ToString();
+            // Act
+            string actual = attributes.ToString();
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void AddAttributes_AddingTwoHeroAttributes_ShouldReturnNewWithAddedFieldValues()
+        {
+            // Arrange
+            HeroAttributes attributes = new HeroAttributes(1, 1, 8);
+            HeroAttributes attributes2 = new HeroAttributes(1, 1, 8);
+            HeroAttributes expected = new HeroAttributes(2, 2, 16);
+            // Act
+            HeroAttributes actual = HeroAttributes.AddAttributes(attributes, attributes2);
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        #endregion
 
     }
 }

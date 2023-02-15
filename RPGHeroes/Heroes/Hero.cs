@@ -80,7 +80,7 @@ namespace RPGHeroes.Heroes
             sb.AppendLine("Name: " + Name);
             sb.AppendLine("Class: " + type); // this.Type.Name
             sb.AppendLine("Level: " + Level);
-            sb.Append(LevelAttributes.ToString());
+            sb.Append(CalculateTotalAttributes());
             sb.AppendLine("Damage: " + damage);
             return sb.ToString();
         }
