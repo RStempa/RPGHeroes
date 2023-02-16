@@ -17,7 +17,7 @@ namespace RPGHeroes.Heroes
             ValidArmorTypes.Add(ArmorType.Mail);
         }
 
-        public override void LevelUp() // can move to base class with get type()
+        public override void LevelUp() 
         {
             Level += 1;
             HeroAttributes LevelUpAttributes = new HeroAttributes(1, 4, 1);

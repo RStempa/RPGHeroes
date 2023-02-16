@@ -23,7 +23,7 @@ namespace RPGHeroes.Heroes
             sb = new StringBuilder();
             Name = name;
             Level = 1;
-            Equipment = new Dictionary<Slot, Item>(); // should have 4 keys and null values
+            Equipment = new Dictionary<Slot, Item>(); 
             ValidWeaponTypes = new List<WeaponType>();
             ValidArmorTypes = new List<ArmorType>();
             LevelAttributes = new HeroAttributes(strength, dexterity, intelligence);
@@ -78,7 +78,7 @@ namespace RPGHeroes.Heroes
         {
             sb.Clear();
             sb.AppendLine("Name: " + Name);
-            sb.AppendLine("Class: " + type); // this.Type.Name
+            sb.AppendLine("Class: " + type); 
             sb.AppendLine("Level: " + Level);
             sb.Append(CalculateTotalAttributes());
             sb.AppendLine("Damage: " + damage);

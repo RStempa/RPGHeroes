@@ -36,5 +36,10 @@ namespace RPGHeroes.Items
                    Slot == item.Slot;
         }
         public abstract string ItemToString();
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

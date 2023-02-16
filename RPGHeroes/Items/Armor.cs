@@ -20,7 +20,7 @@ namespace RPGHeroes.Items
         public HeroAttributes ArmorAttributes { get;}
 
         public Armor(string name, int requieredLevel, Slot slot, ArmorType type, int strength, int dexterity, int intelligence) : base(name, requieredLevel, slot)
-        {   // maybe use heroattribute to send in?
+        {   
             sb = new StringBuilder();
             Type = type;
             ArmorAttributes = new HeroAttributes(strength, dexterity, intelligence);    
