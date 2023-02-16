@@ -16,7 +16,6 @@ namespace RPGHeroes.Items
 
     public abstract class Item
     {
-        StringBuilder sb;
         public string Name { get; set; }
         public int RequieredLevel { get; set; }
         public Slot Slot { get; set; }
@@ -26,20 +25,7 @@ namespace RPGHeroes.Items
             Name = name;
             RequieredLevel = requieredLevel;
             Slot = slot;
-            sb= new StringBuilder();
         }
-        public override bool Equals(object obj) 
-        {
-            return obj is Item item &&
-                   Name == item.Name &&
-                   RequieredLevel == item.RequieredLevel &&
-                   Slot == item.Slot;
-        }
-        public abstract string ItemToString();
 
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
