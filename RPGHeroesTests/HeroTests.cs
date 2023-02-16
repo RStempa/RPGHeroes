@@ -18,7 +18,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             var name = "Alberto";
-            var mage = new Mage(name);
+            Hero mage = new Mage(name);
             string expected = name;
             // Act
             string actual = mage.Name;
@@ -31,7 +31,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             var name = "Alberto";
-            var ranger = new Ranger(name);
+            Hero ranger = new Ranger(name);
             string expected = name;
             // Act
             string actual = ranger.Name;
@@ -44,7 +44,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             var name = "Alberto";
-            var rogue = new Rogue(name);
+            Hero rogue = new Rogue(name);
             string expected = name;
             // Act
             string actual = rogue.Name;
@@ -57,7 +57,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             var name = "Alberto";
-            var warrior = new Warrior(name);
+            Hero warrior = new Warrior(name);
             string expected = name;
             // Act
             string actual = warrior.Name;
@@ -70,7 +70,7 @@ namespace RPGHeroesTests
         {
             // Arrange
             var name = "Alberto";
-            var mage = new Mage(name);
+            Hero mage = new Mage(name);
             int expected = 1;
             // Act
             int actual = mage.Level;
@@ -82,7 +82,7 @@ namespace RPGHeroesTests
         public void Constructor_InitializeMage_ShouldSetCorrectAttributes()
         {
             // Arrange
-            Mage mage = new("Alberto");
+            Hero mage = new Mage("Alberto");
             HeroAttributes expected = new(1, 1, 8);
             // Act
             HeroAttributes actual = mage.LevelAttributes;
@@ -94,7 +94,7 @@ namespace RPGHeroesTests
         public void Constructor_InitializeRanger_ShouldSetCorrectAttributes()
         {
             // Arrange
-            Ranger ranger = new("Alberto");
+            Hero ranger = new Ranger("Alberto");
             HeroAttributes expected = new(1, 7, 1);
             // Act
             HeroAttributes actual = ranger.LevelAttributes;
@@ -106,7 +106,7 @@ namespace RPGHeroesTests
         public void Constructor_InitializeRogue_ShouldSetCorrectAttributes()
         {
             // Arrange
-            Rogue rogue = new("Alberto");
+            Hero rogue = new Rogue("Alberto");
             HeroAttributes expected = new(2, 6, 1);
             // Act
             HeroAttributes actual = rogue.LevelAttributes;
@@ -118,7 +118,7 @@ namespace RPGHeroesTests
         public void Constructor_InitializeWarrior_ShouldSetCorrectAttributes()
         {
             // Arrange
-            Warrior warrior = new("Alberto");
+            Hero warrior = new Warrior("Alberto");
             HeroAttributes expected = new(5, 2, 1);
             // Act
             HeroAttributes actual = warrior.LevelAttributes;
@@ -134,8 +134,7 @@ namespace RPGHeroesTests
         public void Method_LevelUpMage_ShouldSetCorrectLevel()
         {
             // Arrange
-            // Arrange
-            Mage mage = new("Alberto");
+            Hero mage = new Mage("Alberto");
             int expected = 2;
             // Act
             mage.LevelUp();
@@ -148,7 +147,7 @@ namespace RPGHeroesTests
         public void Method_LevelUpRanger_ShouldSetCorrectLevel()
         {
             // Arrange
-            Ranger ranger = new("Alberto");
+            Hero ranger = new Ranger("Alberto");
             int expected = 2;
             // Act
             ranger.LevelUp();
@@ -161,7 +160,7 @@ namespace RPGHeroesTests
         public void Method_LevelUpRogue_ShouldSetCorrectLevel()
         {
             // Arrange
-            Rogue rogue = new("Alberto");
+            Hero rogue = new Rogue("Alberto");
             int expected = 2;
             // Act
             rogue.LevelUp();
@@ -174,7 +173,7 @@ namespace RPGHeroesTests
         public void Method_LevelUpWarrior_ShouldSetCorrectLevel()
         {
             // Arrange
-            Warrior warrior = new("Alberto");
+            Hero warrior = new Warrior("Alberto");
             int expected = 2;
             // Act
             warrior.LevelUp();
@@ -187,7 +186,7 @@ namespace RPGHeroesTests
         public void Method_LevelUpMage_ShouldSetCorrectAttributes()
         {
             // Arrange
-            Mage mage = new("Alberto");
+            Hero mage = new Mage("Alberto");
             HeroAttributes expected = new(2, 2, 13);
             // Act
             mage.LevelUp();
@@ -200,7 +199,7 @@ namespace RPGHeroesTests
         public void Method_LevelUpRanger_ShouldSetCorrectAttributes()
         {
             // Arrange
-            Ranger ranger = new("Alberto");
+            Hero ranger = new Ranger("Alberto");
             HeroAttributes expected = new(2, 12, 2);
             // Act
             ranger.LevelUp();
@@ -213,7 +212,7 @@ namespace RPGHeroesTests
         public void Method_LevelUpRogue_ShouldSetCorrectAttributes()
         {
             // Arrange
-            Rogue rogue = new("Alberto");
+            Hero rogue = new Rogue("Alberto");
             HeroAttributes expected = new(3, 10, 2);
             // Act
             rogue.LevelUp();
@@ -226,7 +225,7 @@ namespace RPGHeroesTests
         public void Method_LevelUpWarrior_ShouldSetCorrectAttributes()
         {
             // Arrange
-            Warrior warrior = new("Alberto");
+            Hero warrior = new Warrior("Alberto");
             HeroAttributes expected = new(8, 4, 2);
             // Act
             warrior.LevelUp();
