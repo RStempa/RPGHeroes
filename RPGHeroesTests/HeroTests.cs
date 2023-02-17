@@ -362,7 +362,40 @@ namespace RPGHeroesTests
         #region Exceptions
 
         [Fact]
-        public void Exception_EquipWeaponWrongType_ShouldThrowInvalidWeaponException()
+        public void Exception_EquipWeaponWarriorWrongType_ShouldThrowInvalidWeaponException()
+        {
+            // Arrange
+            Weapon weapon = new("Common Wand", 1, WeaponType.Wand, 2);
+            Hero warrior = new Warrior("Alberto");
+            // Act
+            //Assert
+            Assert.Throws<InvalidWeaponException>(() => warrior.EquipWeapon(weapon));
+        }
+
+        [Fact]
+        public void Exception_EquipWeaponMageWrongType_ShouldThrowInvalidWeaponException()
+        {
+            // Arrange
+            Weapon weapon = new("Common Wand", 1, WeaponType.Axe, 2);
+            Hero mage = new Mage("Alberto");
+            // Act
+            //Assert
+            Assert.Throws<InvalidWeaponException>(() => mage.EquipWeapon(weapon));
+        }
+
+        [Fact]
+        public void Exception_EquipWeaponRangerWrongType_ShouldThrowInvalidWeaponException()
+        {
+            // Arrange
+            Weapon weapon = new("Common Wand", 1, WeaponType.Axe, 2);
+            Hero ranger = new Ranger("Alberto");
+            // Act
+            //Assert
+            Assert.Throws<InvalidWeaponException>(() => ranger.EquipWeapon(weapon));
+        }
+
+        [Fact]
+        public void Exception_EquipWeaponRogueWrongType_ShouldThrowInvalidWeaponException()
         {
             // Arrange
             Weapon weapon = new("Common Wand", 1, WeaponType.Wand, 2);
@@ -384,7 +417,7 @@ namespace RPGHeroesTests
         }
 
         [Fact]
-        public void Exception_EquipArmorWrongType_ShouldThrowInvalidArmorException()
+        public void Exception_EquipArmorWarriorWrongType_ShouldThrowInvalidArmorException()
         {
             // Arrange
             Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 0, 0, 1);
@@ -392,6 +425,39 @@ namespace RPGHeroesTests
             // Act
             //Assert
             Assert.Throws<InvalidArmorException>(() => warrior.EquipArmor(armor));
+        }
+
+        [Fact]
+        public void Exception_EquipArmorMageWrongType_ShouldThrowInvalidArmorException()
+        {
+            // Arrange
+            Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Leather, 0, 0, 1);
+            Hero mage = new Mage("Alberto");
+            // Act
+            //Assert
+            Assert.Throws<InvalidArmorException>(() => mage.EquipArmor(armor));
+        }
+
+        [Fact]
+        public void Exception_EquipArmorRogueiorWrongType_ShouldThrowInvalidArmorException()
+        {
+            // Arrange
+            Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 0, 0, 1);
+            Hero rogue = new Rogue("Alberto");
+            // Act
+            //Assert
+            Assert.Throws<InvalidArmorException>(() => rogue.EquipArmor(armor));
+        }
+
+        [Fact]
+        public void Exception_EquipArmorRangerWrongType_ShouldThrowInvalidArmorException()
+        {
+            // Arrange
+            Armor armor = new Armor("Common cloth", 1, Slot.Body, ArmorType.Cloth, 0, 0, 1);
+            Hero ranger = new Ranger("Alberto");
+            // Act
+            //Assert
+            Assert.Throws<InvalidArmorException>(() => ranger.EquipArmor(armor));
         }
 
         [Fact]
